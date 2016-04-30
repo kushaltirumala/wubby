@@ -6,33 +6,35 @@ go [here](http://docs.opencv.org/3.0-beta/doc/tutorials/introduction/java_eclips
 
 if that doesn't work run the following in shell:
 
-cd ~ 
+<code>cd ~</code> 
 
 
-mkdir Vision
+<code>mkdir Vision</code>
 
 
-cd Vision
+<code>cd Vision</code>
 
 
-git clone git://github.com/Itseez/opencv.git
+<code>git clone git://github.com/Itseez/opencv.git</code>
+that will take some time
 
 
-cd opencv
+<code>cd opencv</code>
 
 
-mkdir build
+<code>mkdir build</code>
 
 
-cd build
+<code>cd build</code>
 
 
-cmake -DBUILD_SHARED_LIBS=OFF ..
+<code>cmake -DBUILD_SHARED_LIBS=OFF ..</code>
 
 (if "cmake is not found", download cmake by running <code>brew install cmake</code>)
 
 
-make -j8
+<code>make -j8</code>
+this is also gonna take some time
 
 
 then go into eclipse, open preferences, add a new library, select it and add the new external opencv.jar as a library within your project and you're good to go :)
