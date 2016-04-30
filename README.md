@@ -1,9 +1,6 @@
 # wubby
 
-
-go [here](http://docs.opencv.org/3.0-beta/doc/tutorials/introduction/java_eclipse/java_eclipse.html) to download + configure the plugin for eclipse
-
-if that doesn't work run the following in shell:
+run the following in shell:
 
 <code>cd ~</code> 
 
