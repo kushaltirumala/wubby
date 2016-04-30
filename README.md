@@ -29,6 +29,8 @@ cd build
 
 cmake -DBUILD_SHARED_LIBS=OFF ..
 
+(if "cmake is not found", download cmake by running <code>brew install cmake</code>)
+
 
 make -j8
 
