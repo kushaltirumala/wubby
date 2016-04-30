@@ -1,9 +1,14 @@
 package webcammy;
 
 import java.awt.image.BufferedImage;
+import org.opencv.core.Core;
 import org.opencv.videoio.*;
 
-public class VideoCap {    
+public class VideoCap {
+    static{
+        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+    }
+
     VideoCapture cap;
     Mat2Image mat2Img = new Mat2Image();
 
