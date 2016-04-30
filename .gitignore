@@ -1,14 +1,17 @@
+.metadata/
+.recommenders/
 *.class
-
-# Mobile Tools for Java (J2ME)
+*.classpath
+*.project
+*.doc
 .mtj.tmp/
-
-# Package Files #
 *.jar
 *.war
 *.ear
-
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
-
-*.metadata
+.idea/
+*.in
+*.out
+*.wav
+*.txt
+USACO/src/lol.java
