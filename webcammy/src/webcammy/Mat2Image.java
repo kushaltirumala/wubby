@@ -3,6 +3,9 @@ package webcammy;
 import java.awt.image.BufferedImage;
 import org.opencv.core.Core;
 import org.opencv.core.Mat;
+import java.awt.image.DataBufferByte;
+import org.opencv.core.CvType;
+
 
 public class Mat2Image {
 	
@@ -13,28 +16,25 @@ public class Mat2Image {
     
     public Mat2Image() {}
     
-    public Mat2Image(Mat mat) {
-        getSpace(mat);
-    }
-    
-    public void getSpace(Mat mat) {
-        this.mat = mat;
-        int w = mat.cols(), h = mat.rows();
-        if (dat == null || dat.length != w * h * 3)
-            dat = new byte[w * h * 3];
-        if (img == null || img.getWidth() != w || img.getHeight() != h
-            || img.getType() != BufferedImage.TYPE_3BYTE_BGR)
-                img = new BufferedImage(w, h, BufferedImage.TYPE_3BYTE_BGR);
-        }
-    
     
     public BufferedImage getImage(Mat mat){
-        getSpace(mat);
+    	this.mat = mat;
+        int w = mat.cols(), h = mat.rows();
+        dat = new byte[w * h * 3];
+        img = new BufferedImage(w, h, BufferedImage.TYPE_3BYTE_BGR);
         mat.get(0, 0, dat);
         img.getRaster().setDataElements(0, 0, mat.cols(), mat.rows(), dat);
         return img;
     }
-    static{
+    
+    public static Mat bufferedImageToMat(BufferedImage bi) {
+    	  Mat mat = new Mat(bi.getHeight(), bi.getWidth(), CvType.CV_8UC3);
+    	  byte[] data = ((DataBufferByte) bi.getRaster().getDataBuffer()).getData();
+    	  mat.put(0, 0, data);
+    	  return mat;
+    	}
+    
+    {
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
     }
 }
