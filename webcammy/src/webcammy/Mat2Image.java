@@ -8,9 +8,8 @@ import org.opencv.core.CvType;
 
 
 public class Mat2Image {
-	
-    Mat mat = new Mat();
     BufferedImage img;
+    Mat mat = new Mat();
     byte[] dat;
     
     
@@ -19,7 +18,8 @@ public class Mat2Image {
     
     public BufferedImage getImage(Mat mat){
     	this.mat = mat;
-        int w = mat.cols(), h = mat.rows();
+        int w = mat.cols();
+        int h = mat.rows();
         dat = new byte[w * h * 3];
         img = new BufferedImage(w, h, BufferedImage.TYPE_3BYTE_BGR);
         mat.get(0, 0, dat);
