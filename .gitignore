@@ -1,6 +1,8 @@
 .metadata/
 .recommenders/
 *.class
+*.classpath
+ *.project
 *.doc
 .mtj.tmp/
 *.jar
