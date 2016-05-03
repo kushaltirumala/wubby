@@ -7,6 +7,7 @@ public class MyFrame extends JFrame {
 	
     public VideoCap videoCap = new VideoCap();
 	private JPanel contentPane;
+	private JButton takePicture;
 
 
 
@@ -21,18 +22,22 @@ public class MyFrame extends JFrame {
 
     
     public MyFrame() {
+    	
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 650, 490);
+        setBounds(100, 100, 500, 500);
         contentPane = new JPanel();
         setContentPane(contentPane);
-        contentPane.setLayout(null);
-  
+        contentPane.setLayout(new BorderLayout());
+        takePicture = new JButton("Take a picture");
+    	takePicture.setBounds(0, 0, 100, 100);
+    	contentPane.add(takePicture);
+    	contentPane.setVisible(true);
         new newthread().start();
     }
  
     public void paint(Graphics g){
         g = contentPane.getGraphics();
-        g.drawImage(videoCap.getOneFrame(), 0, 0, this);
+        g.drawImage(videoCap.getOneFrame(), 300,0, this);
     }
     
     public static void main(String[] args) {

@@ -10,7 +10,7 @@ import org.opencv.core.CvType;
 public class Mat2Image {
     BufferedImage img;
     Mat mat = new Mat();
-    byte[] dat;
+    byte[] data;
     
     
     public Mat2Image() {}
@@ -20,10 +20,10 @@ public class Mat2Image {
     	this.mat = mat;
         int w = mat.cols();
         int h = mat.rows();
-        dat = new byte[w * h * 3];
+        data = new byte[w * h * 3];
         img = new BufferedImage(w, h, BufferedImage.TYPE_3BYTE_BGR);
-        mat.get(0, 0, dat);
-        img.getRaster().setDataElements(0, 0, mat.cols(), mat.rows(), dat);
+        mat.get(0, 0, data);
+        img.getRaster().setDataElements(0, 0, mat.cols(), mat.rows(), data);
         return img;
     }
     
