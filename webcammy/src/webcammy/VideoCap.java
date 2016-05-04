@@ -2,23 +2,50 @@ package webcammy;
 
 import java.awt.image.BufferedImage;
 import org.opencv.core.Core;
+import org.opencv.core.Mat;
 import org.opencv.videoio.*;
 
 public class VideoCap {
-    {
-        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
-    }
+	
+    private Mat mat = new Mat();
+    private byte[] data;
+    private BufferedImage img;
+    ScreenFilter newFilter;
+    
+    
 
     VideoCapture cap;
-    Mat2Image mat2Img = new Mat2Image();
 
     public VideoCap(){
         cap = new VideoCapture();
         cap.open(0);
     } 
+    
+    public void changeFilter(ScreenFilter t){
+    	newFilter = t;
+    }
  
     public BufferedImage getOneFrame() {
-        cap.read(mat2Img.mat);
-        return mat2Img.getImage(mat2Img.mat);
+        cap.read(mat);
+        if(newFilter==null)
+        	return getImage(mat);
+        else
+        	return newFilter.filter();
     }
+    
+    public BufferedImage getImage(Mat mat){
+    	this.mat = mat;
+        int w = mat.cols();
+        int h = mat.rows();
+        data = new byte[w * h * 3];
+        img = new BufferedImage(w, h, BufferedImage.TYPE_3BYTE_BGR);
+        mat.get(0, 0, data);
+        img.getRaster().setDataElements(0, 0, mat.cols(), mat.rows(), data);
+        return img;
+    }
+    
+    {
+        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+    }
+    
 }
