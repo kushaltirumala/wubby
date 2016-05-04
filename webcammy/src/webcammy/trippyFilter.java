@@ -11,7 +11,6 @@ public class trippyFilter implements ScreenFilter {
 	}
 	
 	public BufferedImage filter() {
-		
 		return img;
 	}
 
