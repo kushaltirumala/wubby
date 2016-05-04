@@ -1,23 +1,27 @@
 package webcammy;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 
 import org.opencv.core.Core;
 
-public class VideoPanel extends JPanel {
+public class VideoPanel extends JPanel implements ActionListener {
 	
     public VideoCap videoCap = new VideoCap();
 	private JPanel videoPane;
 	private JButton takePicture;
+	 JButton blackFilter = new JButton("change filter to black");
 
     public VideoPanel() {	
     	super();
     }
  
     public void paint(Graphics g){
-        super.paintComponent(g);
+        paintComponent(g);
         g.drawImage(videoCap.getOneFrame(), -100,200, this);
     }
     
@@ -35,16 +39,14 @@ public class VideoPanel extends JPanel {
         
         frame.setVisible(true);
 
-       // frame.setContentPane(vid);
         frame.add(vid, BorderLayout.CENTER);
         frame.add(buttons, BorderLayout.SOUTH);
         
         JButton blackFilter = new JButton("change filter to black");
-    	//blackFilter.setBounds(0, 0, 50, 50);
     	buttons.add(blackFilter, BorderLayout.SOUTH);
+    	blackFilter.addActionListener(vid);
     	
     	JButton trippyFilter = new JButton("change filter to trippy");
-    	//blackFilter.setBounds(0, 0, 50, 50);
     	buttons.add(trippyFilter, BorderLayout.SOUTH);
         
 
@@ -54,5 +56,12 @@ public class VideoPanel extends JPanel {
         	vid.repaint();
         }
     }
+
+	public void actionPerformed(ActionEvent e) {
+		JButton source = (JButton)e.getSource();
+		if(source.getText().equals("change filter to black")) {
+			//videoCap.changeFilter(); you can change the filter here
+		}
+	}
 }
 
