@@ -60,7 +60,8 @@ public class VideoPanel extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		JButton source = (JButton)e.getSource();
 		if(source.getText().equals("change filter to black")) {
-			//videoCap.changeFilter(); you can change the filter here
+			System.out.println("hi");
+			videoCap.changeFilter(new BlackWhiteFilter(videoCap.getMat()));
 		}
 	}
 }

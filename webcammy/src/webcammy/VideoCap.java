@@ -30,7 +30,7 @@ public class VideoCap {
         if(newFilter==null)
         	return getImage(mat);
         else
-        	return newFilter.filter();
+        	return newFilter.filter(getImage(mat));
     }
     
     public BufferedImage getImage(Mat mat){
@@ -42,6 +42,10 @@ public class VideoCap {
         mat.get(0, 0, data);
         img.getRaster().setDataElements(0, 0, mat.cols(), mat.rows(), data);
         return img;
+    }
+    
+    public Mat getMat(){
+    	return mat;
     }
     
     {

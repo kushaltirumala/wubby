@@ -2,11 +2,13 @@ package webcammy;
 
 import java.awt.image.BufferedImage;
 
-public class blackFilter implements ScreenFilter {
+import org.opencv.core.Mat;
+
+public class TrippyFilter implements ScreenFilter {
 
 	private BufferedImage img;
 
-	public blackFilter(BufferedImage img) {
+	public TrippyFilter(BufferedImage img) {
 		
 		this.img = img;
 	}
@@ -20,5 +22,10 @@ public class blackFilter implements ScreenFilter {
 			}
 		}
 		return img;
+	}
+
+	public BufferedImage filter(BufferedImage img) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
