@@ -48,6 +48,7 @@ public class VideoPanel extends JPanel implements ActionListener {
     	
     	JButton trippyFilter = new JButton("change filter to trippy");
     	buttons.add(trippyFilter, BorderLayout.SOUTH);
+    	trippyFilter.addActionListener(vid);
         
 
     	vid.setVisible(true);
@@ -60,8 +61,11 @@ public class VideoPanel extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		JButton source = (JButton)e.getSource();
 		if(source.getText().equals("change filter to black")) {
-			System.out.println("hi");
-			videoCap.changeFilter(new BlackWhiteFilter(videoCap.getMat()));
+			System.out.println("black");
+			videoCap.changeFilter(new BlackWhiteFilter());
+		} else if (source.getText().equals("change filter to trippy")) {
+			System.out.println("edge detection");
+			videoCap.changeFilter(new EdgeFilter());
 		}
 	}
 }

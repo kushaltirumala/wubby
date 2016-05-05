@@ -6,13 +6,8 @@ import java.awt.image.BufferedImage;
 import org.opencv.core.Mat;
 
 public class BlackWhiteFilter implements ScreenFilter {
-
-	private Mat mat;
-	
-	
-	public BlackWhiteFilter(Mat mat){
-		this.mat = mat;
-	}
+		
+	public BlackWhiteFilter(){	}
 	
 	public int turnRGBintoGrayscale(Color c){
 		int r = c.getRed();
