@@ -3,7 +3,10 @@ package webcammy;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.Border;
 
@@ -12,17 +15,15 @@ import org.opencv.core.Core;
 public class VideoPanel extends JPanel implements ActionListener {
 	
     public VideoCap videoCap = new VideoCap();
-	private JPanel videoPane;
-	private JButton takePicture;
 	 JButton blackFilter = new JButton("change filter to black");
 
-    public VideoPanel() {	
+    public VideoPanel() {
     	super();
     }
  
     public void paint(Graphics g){
         paintComponent(g);
-        g.drawImage(videoCap.getOneFrame(), -100,200, this);
+        g.drawImage(videoCap.getOneFrame(), 0,0, this);
     }
     
     public static void main(String[] args) {
@@ -46,11 +47,16 @@ public class VideoPanel extends JPanel implements ActionListener {
     	buttons.add(blackFilter, BorderLayout.SOUTH);
     	blackFilter.addActionListener(vid);
     	
+    	JButton takePic = new JButton("take a picture");
+    	buttons.add(takePic, BorderLayout.SOUTH);
+    	takePic.addActionListener(vid);
+    	
     	JButton trippyFilter = new JButton("change filter to trippy");
     	buttons.add(trippyFilter, BorderLayout.SOUTH);
     	trippyFilter.addActionListener(vid);
         
-
+    	
+    	
     	vid.setVisible(true);
         
         while(true){
@@ -66,6 +72,15 @@ public class VideoPanel extends JPanel implements ActionListener {
 		} else if (source.getText().equals("change filter to trippy")) {
 			System.out.println("edge detection");
 			videoCap.changeFilter(new EdgeFilter());
+		} else if (source.getText().equals("take a picture")){
+			System.out.println("picture");
+			File outputfile = new File("image.jpg");
+			try {
+				ImageIO.write(videoCap.getImage(videoCap.getMat()), "jpg", outputfile);
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 	}
 }
