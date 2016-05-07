@@ -43,13 +43,17 @@ public class VideoPanel extends JPanel implements ActionListener {
 		frame.add(vid, BorderLayout.CENTER);
 		frame.add(buttons, BorderLayout.SOUTH);
 
+		JButton takePic = new JButton("take a picture");
+		buttons.add(takePic, BorderLayout.SOUTH);
+		takePic.addActionListener(vid);
+		
 		JButton blackFilter = new JButton("change filter to black");
 		buttons.add(blackFilter, BorderLayout.SOUTH);
 		blackFilter.addActionListener(vid);
 
-		JButton takePic = new JButton("take a picture");
-		buttons.add(takePic, BorderLayout.SOUTH);
-		takePic.addActionListener(vid);
+		JButton negFilter = new JButton("change filter to negative");
+		buttons.add(negFilter, BorderLayout.SOUTH);
+		negFilter.addActionListener(vid);
 
 		JButton trippyFilter = new JButton("change filter to trippy");
 		buttons.add(trippyFilter, BorderLayout.SOUTH);
@@ -70,6 +74,10 @@ public class VideoPanel extends JPanel implements ActionListener {
 		} else if (source.getText().equals("change filter to trippy")) {
 			System.out.println("edge detection");
 			videoCap.changeFilter(new EdgeFilter());
+			
+		} else if(source.getText().equals("change filter to negative")) {
+			System.out.println("negative");
+			videoCap.changeFilter(new NegativeFilter());
 		} else if (source.getText().equals("take a picture")) {
 			System.out.println("picture");
 			File outputfile = new File("image.jpg");
