@@ -89,7 +89,7 @@ public class VideoPanel extends JPanel implements ActionListener {
 			videoCap.changeFilter(new NegativeFilter());
 		} else if (source.getText().equals("take a picture")) {
 			System.out.println("picture");
-			File outputfile = new File("image"+imageCount+".jpg");
+			File outputfile = new File("images/image"+imageCount+".jpg");
 			try {
 				ImageIO.write(videoCap.getOneFrame(), "jpg", outputfile);
 				imageCount++;
