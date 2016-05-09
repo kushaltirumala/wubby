@@ -16,7 +16,9 @@ public class VideoPanel extends JPanel implements ActionListener {
 
 	public VideoCap videoCap = new VideoCap();
 	JButton blackFilter = new JButton("change filter to black");
-
+	private int imageCount = 0;
+	
+	
 	public VideoPanel() {
 		super();
 	}
@@ -59,6 +61,10 @@ public class VideoPanel extends JPanel implements ActionListener {
 		buttons.add(trippyFilter, BorderLayout.SOUTH);
 		trippyFilter.addActionListener(vid);
 
+		JButton resetFilter = new JButton("change filter back to normal");
+		buttons.add(resetFilter, BorderLayout.SOUTH);
+		resetFilter.addActionListener(vid);
+		
 		vid.setVisible(true);
 
 		while (true) {
@@ -75,14 +81,18 @@ public class VideoPanel extends JPanel implements ActionListener {
 			System.out.println("edge detection");
 			videoCap.changeFilter(new EdgeFilter());
 			
+		} else if(source.getText().equals("change filter back to normal")) {
+			System.out.println("normal");
+			videoCap.changeFilter(null);
 		} else if(source.getText().equals("change filter to negative")) {
 			System.out.println("negative");
 			videoCap.changeFilter(new NegativeFilter());
 		} else if (source.getText().equals("take a picture")) {
 			System.out.println("picture");
-			File outputfile = new File("image.jpg");
+			File outputfile = new File("image"+imageCount+".jpg");
 			try {
 				ImageIO.write(videoCap.getOneFrame(), "jpg", outputfile);
+				imageCount++;
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
