@@ -15,7 +15,6 @@ public class VideoPanel extends JPanel  {
 
 	public VideoCap videoCap = new VideoCap();
 	JButton blackFilter = new JButton("change filter to black");
-	private int imageCount = 0;
 	
 	
 	public VideoPanel() {

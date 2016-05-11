@@ -14,17 +14,20 @@ public class VideoFrame {
 		JFrame frame = new JFrame();
 
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setBounds(100, 100, 1000, 1000);
+		frame.setBounds(0, 0, 1200, 1200);
 		frame.setLayout(new BorderLayout());
 
 		VideoPanel vid = new VideoPanel();
 		VideoButtons buttons = new VideoButtons(vid.getVidCap());
+		TopPanel top = new TopPanel(vid.getVidCap());
 
 		frame.setVisible(true);
-
+		
+		
+		frame.add(top, BorderLayout.NORTH);
 		frame.add(vid, BorderLayout.CENTER);
 		frame.add(buttons, BorderLayout.SOUTH);
-
+		
 		
 		vid.setVisible(true);
 

@@ -3,21 +3,16 @@ package webcammy;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 
-import org.opencv.core.Mat;
-
-public class NegativeFilter implements ScreenFilter {
+public class NormalFilter implements ScreenFilter {
 
 	public int turnRGBintoNegative(Color c){
 		
 		int r = c.getRed();
 		int g= c.getGreen();
 		int b= c.getBlue();
-		int red = 255-r;
-		int green = 255-g; int blue = 255-b;
-		Color newc = new Color(red, green, blue);
+		
+		Color newc = new Color(b, g, r);
 		return newc.getRGB();
-		
-		
 	}
 	
 	@Override
@@ -32,5 +27,4 @@ public class NegativeFilter implements ScreenFilter {
 		}
 		return img;
 	}
-
 }
