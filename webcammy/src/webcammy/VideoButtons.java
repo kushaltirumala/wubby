@@ -57,15 +57,12 @@ public class VideoButtons extends JPanel implements ActionListener {
 		} else if (source.getText().equals("change to trippy")) {
 			System.out.println("edge detection");
 			videoCap.changeFilter(new EdgeFilter());
-		} else if(source.getText().equals("change back to original")) {
-			System.out.println("normal");
-			videoCap.changeFilter(null);
 		} else if(source.getText().equals("change to negative")) {
 			System.out.println("negative");
 			videoCap.changeFilter(new NegativeFilter());
 		} else if(source.getText().equals("change to normal")) {
 			System.out.println("normal");
-			videoCap.changeFilter(new NormalFilter());
+			videoCap.changeFilter();
 		}
 		
 	}

@@ -14,6 +14,7 @@ import org.opencv.core.Core;
 public class VideoPanel extends JPanel  {
 
 	public VideoCap videoCap = new VideoCap();
+	
 	JButton blackFilter = new JButton("change filter to black");
 	
 	
@@ -28,6 +29,7 @@ public class VideoPanel extends JPanel  {
 	
 	public void paint(Graphics g) {
 		paintComponent(g);
+		//System.out.println(videoCap.getFPS());
 		g.drawImage(videoCap.getOneFrame(), 0, 0, this);
 	}
 	
