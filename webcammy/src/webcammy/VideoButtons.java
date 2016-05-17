@@ -43,6 +43,10 @@ public class VideoButtons extends JPanel implements ActionListener {
 		add(resetFilter, BorderLayout.SOUTH);
 		resetFilter.addActionListener(this);
 		
+		JButton imageFilter = new JButton("change filter to image");
+		add(imageFilter, BorderLayout.SOUTH);
+		imageFilter.addActionListener(this);
+		
 		videoCap = vidCap;
 		images = new LinkedList<File>();
 		setVisible(true);
@@ -63,6 +67,9 @@ public class VideoButtons extends JPanel implements ActionListener {
 		} else if(source.getText().equals("change to normal")) {
 			System.out.println("normal");
 			videoCap.changeFilter();
+		} else if(source.getText().equals("change filter to image")) {
+			System.out.println("image");
+			videoCap.changeFilter(new ImageFilter());
 		}
 		
 	}
