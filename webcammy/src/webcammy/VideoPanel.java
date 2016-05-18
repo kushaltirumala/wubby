@@ -10,13 +10,17 @@ import javax.swing.*;
 import javax.swing.border.Border;
 
 import org.opencv.core.Core;
+import org.opencv.core.Size;
+import org.opencv.videoio.VideoWriter;
+import org.opencv.videoio.Videoio;
 
 public class VideoPanel extends JPanel  {
 
 	public VideoCap videoCap = new VideoCap();
-	
-	JButton blackFilter = new JButton("change filter to black");
-	
+	int fourcc = VideoWriter.fourcc('m','p','4','v');
+	Size size = new Size(320,240);
+    private VideoWriter vidWriter = new VideoWriter("kappa.mp4v",fourcc, 30, size ,true);
+
 	
 	public VideoPanel() {
 		super();
@@ -31,6 +35,10 @@ public class VideoPanel extends JPanel  {
 		paintComponent(g);
 		//System.out.println(videoCap.getFPS());
 		g.drawImage(videoCap.getOneFrame(), 0, 0, this);
+		if(videoCap.isRecording())
+		{
+			vidWriter.write(videoCap.getMat());
+		}
 	}
 	
 }

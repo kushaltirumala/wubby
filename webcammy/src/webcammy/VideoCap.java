@@ -18,7 +18,8 @@ public class VideoCap {
     private static final double CAMERA_WIDTH = 320;
     private static final double CAMERA_HEIGHT = 240;
     
-    
+    private VideoWriter vidwriter = new VideoWriter();
+    private boolean recording = true;
 
     VideoCapture cap;
 
@@ -69,6 +70,11 @@ public class VideoCap {
     
     public Mat getMat(){
     	return mat;
+    }
+    
+    public boolean isRecording()
+    {
+    	return recording;
     }
     
     {
