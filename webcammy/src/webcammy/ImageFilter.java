@@ -27,4 +27,6 @@ public class ImageFilter implements ScreenFilter {
 		}
 		return img;
 	}
+	
+	
 }
