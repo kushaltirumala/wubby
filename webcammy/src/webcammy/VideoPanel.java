@@ -37,7 +37,7 @@ public class VideoPanel extends JPanel  {
 		g.drawImage(videoCap.getOneFrame(), 0, 0, this);
 		if(videoCap.isRecording())
 		{
-			vidWriter.write(videoCap.getMat());
+			//vidWriter.write(videoCap.getMat());
 		}
 	}
 	
