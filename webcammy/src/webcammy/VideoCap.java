@@ -14,6 +14,7 @@ public class VideoCap {
     private byte[] data;
     private BufferedImage img;
     ScreenFilter newFilter;
+    Processor proc;
     
     private static final double CAMERA_WIDTH = 320;
     private static final double CAMERA_HEIGHT = 240;
@@ -36,6 +37,10 @@ public class VideoCap {
     	newFilter = t;
     }
     
+    public void changeFilter(Processor t) {
+    	proc = t;
+    }
+    
     public void changeFilter(){
     	newFilter = null;
     }
@@ -46,13 +51,23 @@ public class VideoCap {
  
     public BufferedImage getOneFrame() {
         cap.read(mat);
-        if(newFilter==null)
-        	return getImage(mat);
-        else
-        	return newFilter.filter(getImage(mat));
+//       if(newFilter==null)
+//        	return getImage(mat);
+//        else
+//        	return newFilter.filter(getImage(mat));
+       
+       if(proc==null && newFilter==null){
+    	   return getImage(mat);
+       } else if(proc==null){
+    	   return newFilter.filter(getImage(mat));
+       } else {
+    	   return proc.detect(mat);
+       }
+        
+        
     }
     
-    public BufferedImage getImage(Mat frame){
+    public static BufferedImage getImage(Mat frame){
         int type = 0;
         if (frame.channels() == 1) {
             type = BufferedImage.TYPE_BYTE_GRAY;

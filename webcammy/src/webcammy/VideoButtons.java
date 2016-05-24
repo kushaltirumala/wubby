@@ -39,13 +39,13 @@ public class VideoButtons extends JPanel implements ActionListener {
 		add(normalFilter, BorderLayout.SOUTH);
 		normalFilter.addActionListener(this);
 		
-		JButton resetFilter = new JButton("change filter back to original");
-		add(resetFilter, BorderLayout.SOUTH);
-		resetFilter.addActionListener(this);
+		JButton tracking = new JButton("change to track image");
+		add(tracking, BorderLayout.SOUTH);
+		tracking.addActionListener(this);
 		
-		JButton imageFilter = new JButton("change filter to image");
-		add(imageFilter, BorderLayout.SOUTH);
-		imageFilter.addActionListener(this);
+		JButton tmntFilter = new JButton("change to tmnt");
+		add(tmntFilter, BorderLayout.SOUTH);
+		tmntFilter.addActionListener(this);
 		
 		videoCap = vidCap;
 		images = new LinkedList<File>();
@@ -67,7 +67,10 @@ public class VideoButtons extends JPanel implements ActionListener {
 		} else if(source.getText().equals("change to normal")) {
 			System.out.println("normal");
 			videoCap.changeFilter();
-		} else if(source.getText().equals("change filter to image")) {
+		} else if(source.getText().equals("change to track image")) {
+			System.out.println("image");
+			videoCap.changeFilter(new Processor());
+		} else if(source.getText().equals("change to tmnt")) {
 			System.out.println("image");
 			videoCap.changeFilter(new ImageFilter());
 		}
