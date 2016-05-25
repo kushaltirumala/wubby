@@ -2,7 +2,18 @@ package webcammy;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;
-
+/**
+ *  TODO Write a one-sentence summary of your class here.
+ *  TODO Follow it with additional details about its purpose, what abstraction
+ *  it represents, and how to use it.
+ *
+ *  @author  Kushal Tirumala
+ *  @version May 25, 2016
+ *  @author  Period: 6
+ *  @author  Assignment: JMCh19_SafeTrade
+ *
+ *  @author  Sources: TODO
+ */
 public class ImageFilter implements ScreenFilter {
 	private BufferedImage image;
 	private int leftEye;
