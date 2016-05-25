@@ -5,6 +5,7 @@ import java.awt.image.DataBufferByte;
 import java.awt.image.WritableRaster;
 
 import org.opencv.core.Core;
+import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 import org.opencv.videoio.*;
 
@@ -67,6 +68,7 @@ public class VideoCap {
         
     }
     
+    
     public static BufferedImage getImage(Mat frame){
         int type = 0;
         if (frame.channels() == 1) {
@@ -82,6 +84,13 @@ public class VideoCap {
 
         return image;
     }
+    
+    public static Mat getMat(BufferedImage bi) {
+    	  Mat mat = new Mat(bi.getHeight(), bi.getWidth(), CvType.CV_8UC3);
+    	  byte[] data = ((DataBufferByte) bi.getRaster().getDataBuffer()).getData();
+    	  mat.put(0, 0, data);
+    	  return mat;
+    	}
     
     public Mat getMat(){
     	return mat;
