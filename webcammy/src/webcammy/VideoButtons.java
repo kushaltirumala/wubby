@@ -73,7 +73,7 @@ public class VideoButtons extends JPanel implements ActionListener {
 		} else if(source.getText().equals("change to tmnt")) {
 			System.out.println("image");
 			videoCap.changeFilter(new ImageFilter());
-		} 
+		}
 		
 	}
 	
