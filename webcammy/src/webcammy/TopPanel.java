@@ -47,19 +47,16 @@ public class TopPanel extends JPanel implements ActionListener {
 		JButton takeImage = new JButton("take a picture");
 		JButton gPeckImage = new JButton("gpeckify it");
 		JButton imageList = new JButton("list images");
-		JButton airdraw = new JButton("air draw");
 		JButton trackface = new JButton("track faces");
 		listOfFiles = new JTextField();
 		add(listOfFiles, BorderLayout.SOUTH);
 		add(takeImage, BorderLayout.SOUTH);
 		add(gPeckImage, BorderLayout.SOUTH);
 		add(trackface, BorderLayout.SOUTH);
-		add(airdraw);
 		add(imageList);
 		takeImage.addActionListener(this);
 		imageList.addActionListener(this);
 		gPeckImage.addActionListener(this);
-		airdraw.addActionListener(this);
 		trackface.addActionListener(this);
 		
 		setVisible(true);
