@@ -12,7 +12,18 @@ import org.opencv.core.Scalar;
 import org.opencv.core.Size;  
 import org.opencv.imgproc.Imgproc;  
 import org.opencv.objdetect.CascadeClassifier; 
-
+/**
+ *  TODO Write a one-sentence summary of your class here.
+ *  TODO Follow it with additional details about its purpose, what abstraction
+ *  it represents, and how to use it.
+ *
+ *  @author  Kushal Tirumala
+ *  @version May 26, 2016
+ *  @author  Period: 6
+ *  @author  Assignment: JMCh19_SafeTrade
+ *
+ *  @author  Sources: TODO
+ */
 public class Processor {
 	private CascadeClassifier face_cascade;  
 	public Processor(){  

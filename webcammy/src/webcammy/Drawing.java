@@ -7,7 +7,18 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Set;
 import java.util.TreeSet;
-
+/**
+ *  TODO Write a one-sentence summary of your class here.
+ *  TODO Follow it with additional details about its purpose, what abstraction
+ *  it represents, and how to use it.
+ *
+ *  @author  Kushal Tirumala
+ *  @version May 26, 2016
+ *  @author  Period: 6
+ *  @author  Assignment: JMCh19_SafeTrade
+ *
+ *  @author  Sources: TODO
+ */
 public class Drawing implements ScreenFilter {
 
 	Set<Point> points;

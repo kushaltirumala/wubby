@@ -8,7 +8,18 @@ import org.opencv.core.Core;
 import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 import org.opencv.videoio.*;
-
+/**
+ *  TODO Write a one-sentence summary of your class here.
+ *  TODO Follow it with additional details about its purpose, what abstraction
+ *  it represents, and how to use it.
+ *
+ *  @author  Kushal Tirumala
+ *  @version May 26, 2016
+ *  @author  Period: 6
+ *  @author  Assignment: JMCh19_SafeTrade
+ *
+ *  @author  Sources: TODO
+ */
 public class VideoCap {
 	
     private Mat mat = new Mat();
@@ -22,8 +33,6 @@ public class VideoCap {
     private static final double CAMERA_WIDTH = 320;
     private static final double CAMERA_HEIGHT = 240;
     
-    private VideoWriter vidwriter = new VideoWriter();
-    private boolean recording = true;
 
     VideoCapture cap;
 
@@ -104,10 +113,7 @@ public class VideoCap {
     	return mat;
     }
     
-    public boolean isRecording()
-    {
-    	return recording;
-    }
+    
     
     {
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);

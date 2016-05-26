@@ -5,7 +5,17 @@ import java.awt.BorderLayout;
 import javax.swing.JFrame;
 
 import org.opencv.core.Core;
-
+/**
+ *  The Frame for our webcam
+ *  Has the main method to run the webcam.
+ *
+ *  @author  Kavi Nelakonda
+ *  @version May 26, 2016
+ *  @author  Period: 6
+ *  @author  Assignment: JMCh19_SafeTrade
+ *
+ *  @author  Sources: TODO
+ */
 public class VideoFrame {
 
 	public static boolean stillMode = false;

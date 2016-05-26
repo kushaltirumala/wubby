@@ -13,6 +13,17 @@ import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+/**
+ *  The bottom panel of our frame.
+ *  A panel with buttons for changing the filters.
+ *
+ *  @author  Kavi Nelakonda
+ *  @version May 26, 2016
+ *  @author  Period: 6
+ *  @author  Assignment: JMCh19_SafeTrade
+ *
+ *  @author  Sources: TODO
+ */
 public class VideoButtons extends JPanel implements ActionListener {
 
 	public VideoCap videoCap;

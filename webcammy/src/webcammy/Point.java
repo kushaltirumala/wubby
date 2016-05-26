@@ -1,5 +1,15 @@
 package webcammy;
-
+/**
+ *  A class to represent a point.
+ *  has an x and y coordinate, and is comparable.
+ *
+ *  @author  Kavi Nelakonda
+ *  @version May 26, 2016
+ *  @author  Period: 6
+ *  @author  Assignment: JMCh19_SafeTrade
+ *
+ *  @author  Sources: TODO
+ */
 class Point implements Comparable<Point> {
 	int x;
 	int y;

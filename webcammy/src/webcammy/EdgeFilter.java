@@ -4,7 +4,17 @@ import java.awt.Color;
 import java.awt.image.BufferedImage;
 
 import org.opencv.core.Mat;
-
+/**
+ *  A filter that highlights the edges of objects in the image with black.
+ *  
+ *
+ *  @author  Ryan Tang
+ *  @version May 26, 2016
+ *  @author  Period: 6
+ *  @author  Assignment: JMCh19_SafeTrade
+ *
+ *  @author  Sources: TODO
+ */
 public class EdgeFilter implements ScreenFilter {
 
 	public EdgeFilter() {}

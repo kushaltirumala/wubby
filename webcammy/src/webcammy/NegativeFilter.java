@@ -4,7 +4,17 @@ import java.awt.Color;
 import java.awt.image.BufferedImage;
 
 import org.opencv.core.Mat;
-
+/**
+ *  A negative filter for the camera.
+ *  Subtracts each color value from 255 and sets that color for the pixel of the image.
+ *
+ *  @author  Ryan Tang
+ *  @version May 26, 2016
+ *  @author  Period: 6
+ *  @author  Assignment: JMCh19_SafeTrade
+ *
+ *  @author  Sources: TODO
+ */
 public class NegativeFilter implements ScreenFilter {
 
 	public int turnRGBintoNegative(Color c){

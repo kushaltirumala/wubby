@@ -4,7 +4,17 @@ import java.awt.Color;
 import java.awt.image.BufferedImage;
 
 import org.opencv.core.Mat;
-
+/**
+ *  A filter for the camera that makes the image black and white.
+ *  Turns the RGB into grayscale, and sets it as the new color of the pixel of the image.
+ *
+ *  @author  Ryan Tang
+ *  @version May 26, 2016
+ *  @author  Period: 6
+ *  @author  Assignment: JMCh19_SafeTrade
+ *
+ *  @author  Sources: TODO
+ */
 public class BlackWhiteFilter implements ScreenFilter {
 		
 	public BlackWhiteFilter(){	}

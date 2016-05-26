@@ -16,7 +16,17 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.text.html.HTMLDocument.Iterator;
-
+/**
+ *  The top panel of our Frame
+ *  Has buttons for taking pictures, gpeckifying our project, and listing out the images
+ *
+ *  @author  Kavi Nelakonda
+ *  @version May 26, 2016
+ *  @author  Period: 6
+ *  @author  Assignment: JMCh19_SafeTrade
+ *
+ *  @author  Sources: TODO
+ */
 public class TopPanel extends JPanel implements ActionListener {
 
 	private LinkedList<File> images;
