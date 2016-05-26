@@ -27,9 +27,9 @@ import org.opencv.objdetect.CascadeClassifier;
 public class Processor {
 	private CascadeClassifier face_cascade;  
 	public Processor(){  
-//        face_cascade=new CascadeClassifier("haarcascade_profileface.xml");  
-//        if(face_cascade.empty())  
-//             return;    
+        face_cascade=new CascadeClassifier("haarcascade_profileface.xml");  
+        if(face_cascade.empty())  
+             return;    
     }  
     public BufferedImage detect(Mat inputframe){    
         MatOfRect faces = new MatOfRect();

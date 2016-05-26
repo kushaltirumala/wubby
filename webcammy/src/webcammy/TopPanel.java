@@ -48,16 +48,19 @@ public class TopPanel extends JPanel implements ActionListener {
 		JButton gPeckImage = new JButton("gpeckify it");
 		JButton imageList = new JButton("list images");
 		JButton airdraw = new JButton("air draw");
+		JButton trackface = new JButton("track faces");
 		listOfFiles = new JTextField();
 		add(listOfFiles, BorderLayout.SOUTH);
 		add(takeImage, BorderLayout.SOUTH);
 		add(gPeckImage, BorderLayout.SOUTH);
+		add(trackface, BorderLayout.SOUTH);
 		add(airdraw);
 		add(imageList);
 		takeImage.addActionListener(this);
 		imageList.addActionListener(this);
 		gPeckImage.addActionListener(this);
 		airdraw.addActionListener(this);
+		trackface.addActionListener(this);
 		
 		setVisible(true);
 	}
@@ -105,6 +108,18 @@ public class TopPanel extends JPanel implements ActionListener {
 			} catch (IOException err) {
 				err.printStackTrace();
 			}
+		} else if(source.getText().equals("track faces")) {
+			Processor proc = new Processor();
+			File outputfile = new File("images/tracked"+imageCount+".jpg");
+			try {
+				videoCap.getOneFrame();
+				BufferedImage toStore = proc.detect(videoCap.getMat());
+				ImageIO.write(toStore, "jpg", outputfile);
+				addImage(outputfile);
+			} catch (IOException err) {
+				err.printStackTrace();
+			}
+			
 		} 
 	}
 
