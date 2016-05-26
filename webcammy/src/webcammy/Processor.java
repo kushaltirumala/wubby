@@ -15,7 +15,6 @@ import org.opencv.objdetect.CascadeClassifier;
 
 public class Processor {
 	private CascadeClassifier face_cascade;  
-
 	public Processor(){  
 //        face_cascade=new CascadeClassifier("haarcascade_profileface.xml");  
 //        if(face_cascade.empty())  

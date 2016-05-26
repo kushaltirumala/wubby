@@ -68,7 +68,7 @@ public class GPeckify extends Processor {
         {  
         	System.out.println("x: " + rect.x + " y: " + rect.y + " height: " + rect.height + " width: " + rect.width);
         	System.out.println(inputFrame.rows() + " " + inputFrame.cols());
-            Point center= new Point(rect.x + rect.width*0.5, rect.y + rect.height*0.5 );  
+            //Point center= new Point(rect.x + rect.width*0.5, rect.y + rect.height*0.5 );  
             //Imgproc.ellipse( inputFrame, center, new Size( rect.width*0.5, rect.height*0.5), 0.0, 0.0, 360.0, new Scalar( 0, 255, 255 ),4,8,0);  
             
             

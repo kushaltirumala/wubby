@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.LinkedList;
@@ -17,7 +18,7 @@ public class VideoButtons extends JPanel implements ActionListener {
 	public VideoCap videoCap;
 	private int imageCount = 0;
 	private LinkedList<File> images;
-	
+	private static double lightReference = Double.NEGATIVE_INFINITY;
 	
 	public VideoButtons(VideoCap vidCap) {
 		setLayout(new FlowLayout());
@@ -43,13 +44,15 @@ public class VideoButtons extends JPanel implements ActionListener {
 		add(tracking, BorderLayout.SOUTH);
 		tracking.addActionListener(this);
 		
-		JButton tmntFilter = new JButton("change to tmnt");
-		add(tmntFilter, BorderLayout.SOUTH);
-		tmntFilter.addActionListener(this);
+
 		
 		JButton drawing = new JButton("draw in the air");
 		add(drawing, BorderLayout.SOUTH);
 		drawing.addActionListener(this);
+		
+		JButton reference = new JButton("light reference");
+		add(reference, BorderLayout.SOUTH);
+		reference.addActionListener(this);
 
 		
 		videoCap = vidCap;
@@ -79,14 +82,21 @@ public class VideoButtons extends JPanel implements ActionListener {
 			System.out.println("turtles");
 			videoCap.changeFilter(new ImageFilter());
 		} else if(source.getText().equals("draw in the air")) {
-			System.out.println("drawing");
-			videoCap.changeFilter(new Drawing());
-		} else if(source.getText().equals("air draw")) {
-			System.out.println("air draw");
-			VideoFrame.stillMode = true;
-			Airdraw a = new Airdraw();
-			a.filter(videoCap.getOneFrame(), videoCap.getStill());
-		}
+			if(lightReference == Double.NEGATIVE_INFINITY){
+				System.out.println("please reference the light you are using");
+			} else {
+			System.out.println("lightReference at: " + lightReference + " and drawing");
+			Canvas c = new Canvas();
+			Drawing d = new Drawing(c, lightReference);
+			videoCap.changeFilter(d);
+			}
+		} else if(source.getText().equals("light reference")) {
+			BufferedImage temp = videoCap.getStill();
+			
+			double t = Drawing.brightness(videoCap.getStill(), temp.getWidth()/2,temp.getHeight()/2);
+			lightReference = t;
+			System.out.println("new light reference point set at : " + lightReference);
+		} 
 		
 	}
 	
