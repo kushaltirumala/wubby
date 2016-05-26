@@ -63,7 +63,6 @@ class DrawPane extends JPanel{
 	}
 	public DrawPane(){
 		super();
-		//image = new BufferedImage(getSize().width, getSize().height, BufferedImage.TYPE_INT_RGB);
 		pointsToAdd = new LinkedList<Point>();
 		setVisible(true);
 	}
