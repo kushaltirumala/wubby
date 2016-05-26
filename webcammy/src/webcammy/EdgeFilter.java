@@ -17,8 +17,16 @@ import org.opencv.core.Mat;
  */
 public class EdgeFilter implements ScreenFilter {
 
+	/**
+	 * The constructor for the filter.
+	 */
 	public EdgeFilter() {}
 	
+	/**
+	 * @param color1 the color of the pixel
+	 * @param color2 the color of the pixel next to the first.
+	 * @return the distance between the the two colors of the adjacent pixels.
+	 */
 	public static double colorDistance( Color color1, Color color2 )
     {
         double redDistance = color1.getRed() - color2.getRed();
@@ -29,6 +37,9 @@ public class EdgeFilter implements ScreenFilter {
         return distance;
     }
 
+	/* (non-Javadoc)
+	 * @see webcammy.ScreenFilter#filter(java.awt.image.BufferedImage)
+	 */
 	public BufferedImage filter(BufferedImage img) {
 		int rows = img.getWidth();
 		int cols = img.getHeight();

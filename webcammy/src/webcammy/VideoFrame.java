@@ -20,6 +20,11 @@ public class VideoFrame {
 
 	public static boolean stillMode = false;
 	
+	/**
+	 * Creates the frame and starts up the webcam.
+	 * 
+	 * @param args not used
+	 */
 	public static void main(String[] args) {
 		System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
 		JFrame frame = new JFrame();

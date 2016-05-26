@@ -14,6 +14,10 @@ class Point implements Comparable<Point> {
 	int x;
 	int y;
 	
+	/**
+	 * @param x the x coordinate
+	 * @param y the y coordinate
+	 */
 	public Point(int x, int y){
 		this.x=x;
 		this.y=y;
@@ -23,6 +27,9 @@ class Point implements Comparable<Point> {
 
 
 	
+	/* (non-Javadoc)
+	 * @see java.lang.Comparable#compareTo(java.lang.Object)
+	 */
 	public int compareTo(Point o) {
 		if (this.y < o.y) 
 			return -1;

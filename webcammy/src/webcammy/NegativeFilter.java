@@ -17,6 +17,15 @@ import org.opencv.core.Mat;
  */
 public class NegativeFilter implements ScreenFilter {
 
+	/**
+	 * The constructor for the filter.
+	 */
+	public NegativeFilter() {}
+	
+	/**
+	 * @param c the color of the pixel
+	 * @return the color integer that corresponds with the negative of the original color.
+	 */
 	public int turnRGBintoNegative(Color c){
 		
 		int r = c.getRed();
@@ -30,6 +39,9 @@ public class NegativeFilter implements ScreenFilter {
 		
 	}
 	
+	/* (non-Javadoc)
+	 * @see webcammy.ScreenFilter#filter(java.awt.image.BufferedImage)
+	 */
 	@Override
 	public BufferedImage filter(BufferedImage img) {
 		int rows = img.getWidth();

@@ -15,5 +15,9 @@ import org.opencv.core.Mat;
  *  @author  Sources: TODO
  */
 public interface ScreenFilter {
+	/**
+	 * @param img the image corresponding to the frame that will be filtered
+	 * @return the filtered image, filtered by iterating through the pixels and changing the color of each one.
+	 */
 	BufferedImage filter(BufferedImage img);
 }

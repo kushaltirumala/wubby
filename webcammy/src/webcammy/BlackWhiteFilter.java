@@ -17,8 +17,15 @@ import org.opencv.core.Mat;
  */
 public class BlackWhiteFilter implements ScreenFilter {
 		
+	/**
+	 * The constructor for the filter.
+	 */
 	public BlackWhiteFilter(){	}
 	
+	/**
+	 * @param c the color of the pixel.
+	 * @return the grayscaled color of the pixel.
+	 */
 	public int turnRGBintoGrayscale(Color c){
 		int r = c.getRed();
 		int g= c.getGreen();
@@ -29,6 +36,9 @@ public class BlackWhiteFilter implements ScreenFilter {
 		return newc.getRGB();
 	}
 	
+	/* (non-Javadoc)
+	 * @see webcammy.ScreenFilter#filter(java.awt.image.BufferedImage)
+	 */
 	public BufferedImage filter(BufferedImage img) {
 		int rows = img.getWidth();
 		int cols = img.getHeight();
