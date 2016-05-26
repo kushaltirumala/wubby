@@ -47,6 +47,11 @@ public class VideoButtons extends JPanel implements ActionListener {
 		add(tmntFilter, BorderLayout.SOUTH);
 		tmntFilter.addActionListener(this);
 		
+		JButton drawing = new JButton("draw in the air");
+		add(drawing, BorderLayout.SOUTH);
+		drawing.addActionListener(this);
+
+		
 		videoCap = vidCap;
 		images = new LinkedList<File>();
 		setVisible(true);
@@ -71,8 +76,16 @@ public class VideoButtons extends JPanel implements ActionListener {
 			System.out.println("image");
 			videoCap.changeFilter(new Processor());
 		} else if(source.getText().equals("change to tmnt")) {
-			System.out.println("image");
+			System.out.println("turtles");
 			videoCap.changeFilter(new ImageFilter());
+		} else if(source.getText().equals("draw in the air")) {
+			System.out.println("drawing");
+			videoCap.changeFilter(new Drawing());
+		} else if(source.getText().equals("air draw")) {
+			System.out.println("air draw");
+			VideoFrame.stillMode = true;
+			Airdraw a = new Airdraw();
+			a.filter(videoCap.getOneFrame(), videoCap.getStill());
 		}
 		
 	}

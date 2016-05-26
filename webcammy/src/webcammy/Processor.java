@@ -17,10 +17,9 @@ public class Processor {
 	private CascadeClassifier face_cascade;  
 
 	public Processor(){  
-        face_cascade=new CascadeClassifier("haarcascade_profileface.xml");  
-        if(face_cascade.empty())  
-             return;  
-       
+//        face_cascade=new CascadeClassifier("haarcascade_profileface.xml");  
+//        if(face_cascade.empty())  
+//             return;    
     }  
     public BufferedImage detect(Mat inputframe){    
         MatOfRect faces = new MatOfRect();
@@ -36,12 +35,11 @@ public class Processor {
         
         face_cascade.detectMultiScale(mat2, faces);  
         
-//        for(Rect rect:faces.toArray())  
-//        {  
-//            Point center= new Point(rect.x + rect.width*0.5, rect.y + rect.height*0.5 );  
-//            //Imgproc.ellipse( mat1, center, new Size( rect.width*0.5, rect.height*0.5), 0.0, 0.0, 360.0, new Scalar( 0, 255, 255 ),4,8,0);  
-//            
-//        }  
+        for(Rect rect:faces.toArray())  
+        {  
+            Point center= new Point(rect.x + rect.width*0.5, rect.y + rect.height*0.5 );  
+            Imgproc.ellipse( mat1, center, new Size( rect.width*0.5, rect.height*0.5), 0.0, 0.0, 360.0, new Scalar( 0, 255, 255 ),4,8,0);  
+        }  
         
         return VideoCap.getImage(mat1);  
     }  

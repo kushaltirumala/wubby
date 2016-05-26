@@ -5,6 +5,7 @@ import java.awt.image.DataBufferByte;
 import java.awt.image.WritableRaster;
 
 import org.opencv.core.Core;
+import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 import org.opencv.videoio.*;
 
@@ -15,6 +16,8 @@ public class VideoCap {
     private BufferedImage img;
     ScreenFilter newFilter;
     Processor proc;
+    Mat still = new Mat();
+    
     
     private static final double CAMERA_WIDTH = 320;
     private static final double CAMERA_HEIGHT = 240;
@@ -45,9 +48,12 @@ public class VideoCap {
     	newFilter = null;
     }
     
+    
     public double getFPS(){
     	return cap.get(5);
     }
+    
+    
  
     public BufferedImage getOneFrame() {
         cap.read(mat);
@@ -56,6 +62,7 @@ public class VideoCap {
 //        else
 //        	return newFilter.filter(getImage(mat));
        
+    	   
        if(proc==null && newFilter==null){
     	   return getImage(mat);
        } else if(proc==null){
@@ -67,6 +74,9 @@ public class VideoCap {
         
     }
     
+    public BufferedImage getStill(){
+    	return getImage(mat);
+    }
     public static BufferedImage getImage(Mat frame){
         int type = 0;
         if (frame.channels() == 1) {
@@ -82,6 +92,13 @@ public class VideoCap {
 
         return image;
     }
+    
+    public static Mat getMat(BufferedImage bi) {
+    	  Mat mat = new Mat(bi.getHeight(), bi.getWidth(), CvType.CV_8UC3);
+    	  byte[] data = ((DataBufferByte) bi.getRaster().getDataBuffer()).getData();
+    	  mat.put(0, 0, data);
+    	  return mat;
+    	}
     
     public Mat getMat(){
     	return mat;

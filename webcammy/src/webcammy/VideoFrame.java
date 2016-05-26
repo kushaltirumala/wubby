@@ -5,19 +5,10 @@ import java.awt.BorderLayout;
 import javax.swing.JFrame;
 
 import org.opencv.core.Core;
-/**
- *  A class for the main.
- *  creates the frame for the webcam application.
- *
- *  @author  Kavi Nelakonda
- *  @version May 25, 2016
- *  @author  Period: 6
- *  @author  Assignment: JMCh19_SafeTrade
- *
- *  @author  Sources: TODO
- */
+
 public class VideoFrame {
 
+	public static boolean stillMode = false;
 	
 	public static void main(String[] args) {
 		System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
@@ -40,9 +31,12 @@ public class VideoFrame {
 		
 		
 		vid.setVisible(true);
-
-		while (true) {
-			vid.repaint();
-		}
+		
+			while (true) {
+				if(stillMode)
+					continue;
+				vid.repaint();
+			}
+		
 	}
 }
