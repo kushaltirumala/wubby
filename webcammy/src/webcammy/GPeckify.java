@@ -42,7 +42,7 @@ public class GPeckify extends Processor {
              return;
 
 			try {
-				img = ImageIO.read(new File("gpeck.png"));
+				img = ImageIO.read(new File("gpeck.jpg"));
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
