@@ -3,22 +3,12 @@ package webcammy;
 import org.junit.Test;
 
 public class JUWebcammyTest {
-	
-	@Test
-	public void imageFilterConstructor()
-	{
-		
-	}
-	
-	@Test
-	public void imageFilterFilter()
-	{
-		
-	}
+
 	
 	@Test
 	public void blackWhiteFilterConstructor()
 	{
+		BlackWhiteFilter s = new BlackWhiteFilter();
 		
 	}
 	

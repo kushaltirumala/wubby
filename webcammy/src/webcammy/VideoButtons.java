@@ -78,10 +78,7 @@ public class VideoButtons extends JPanel implements ActionListener {
 		} else if(source.getText().equals("change to track image")) {
 			System.out.println("image");
 			videoCap.changeFilter(new Processor());
-		} else if(source.getText().equals("change to tmnt")) {
-			System.out.println("turtles");
-			videoCap.changeFilter(new ImageFilter());
-		} else if(source.getText().equals("draw in the air")) {
+		}  else if(source.getText().equals("draw in the air")) {
 			if(lightReference == Double.NEGATIVE_INFINITY){
 				System.out.println("please reference the light you are using");
 			} else {
