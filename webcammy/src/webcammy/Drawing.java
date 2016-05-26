@@ -33,9 +33,7 @@ public class Drawing implements ScreenFilter {
 			for (int i = 0; i < rows; i++) {
 				for (int j = 0; j < cols; j++) {
 					double temp = brightness(img, i, j);
-					// System.out.println(i + " " + j + " " + temp);
-					if (temp < lightReference + 0.05 && temp > lightReference- 0.05) {
-						// System.out.println("yum");
+					if (temp < 0.95 + 0.05 && temp > 0.95- 0.05) {
 						img.setRGB(i, j, Color.red.getRGB());
 						Point toAdd = new Point(i, j);
 						points.add(toAdd);
@@ -57,10 +55,11 @@ public class Drawing implements ScreenFilter {
 
 	public static double brightness(BufferedImage img, int i, int j) {
 		int color = img.getRGB(i, j);
-
-		int red = (color >>> 16) & 0xFF;
-		int green = (color >>> 8) & 0xFF;
-		int blue = (color >>> 0) & 0xFF;
+		Color c = new Color(color);
+		
+		int red = c.getRed();
+		int green = c.getGreen();
+		int blue = c.getBlue();
 
 		return (red * 0.2126f + green * 0.7152f + blue * 0.0722f) / 255;
 	}

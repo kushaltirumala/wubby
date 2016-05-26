@@ -55,7 +55,7 @@ public class Canvas extends JFrame {
 class DrawPane extends JPanel{
 	BufferedImage image;
 	Queue<Point> pointsToAdd;
-	
+	Graphics2D g2;
 	public void init(Set<Point> p){
 		Iterator<Point> iter = p.iterator();
 		while(iter.hasNext())
@@ -68,11 +68,16 @@ class DrawPane extends JPanel{
 		setVisible(true);
 	}
 	public void doDrawing(Graphics g) {
-		g.setColor(Color.red);
+		if(image == null ){
+			image = new BufferedImage(getSize().width, getSize().height, BufferedImage.TYPE_INT_RGB);
+			g2 = (Graphics2D)image.getGraphics();
+		}
+		g2.setColor(Color.red);
 		while(!pointsToAdd.isEmpty()) {
     		Point temp = pointsToAdd.remove();
-    		g.drawRect(temp.x, temp.y, 5, 5);
+    		g2.drawRect(temp.x, temp.y, 5, 5);
     	}
+		g.drawImage(image,0, 0, null);
 		
 	}
     public void paintComponent(Graphics g){
