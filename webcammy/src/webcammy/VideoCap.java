@@ -35,7 +35,10 @@ public class VideoCap {
     
 
     VideoCapture cap;
-
+    public VideoCap(BufferedImage img) {
+    	this.img = img;
+    	still = getMat(img);
+    }
     public VideoCap(){
         cap = new VideoCapture(0);
         //cap.set(Videoio.CV_CAP_PROP_FPS, 30);
@@ -56,31 +59,16 @@ public class VideoCap {
     public void changeFilter(){
     	newFilter = null;
     }
-    
-    
-    public double getFPS(){
-    	return cap.get(5);
-    }
-    
-    
  
     public BufferedImage getOneFrame() {
-        cap.read(mat);
-//       if(newFilter==null)
-//        	return getImage(mat);
-//        else
-//        	return newFilter.filter(getImage(mat));
-       
-    	   
+        cap.read(mat);       
        if(proc==null && newFilter==null){
     	   return getImage(mat);
        } else if(proc==null){
     	   return newFilter.filter(getImage(mat));
        } else {
     	   return proc.detect(mat);
-       }
-        
-        
+       } 
     }
     
     public BufferedImage getStill(){
@@ -113,7 +101,13 @@ public class VideoCap {
     	return mat;
     }
     
+    public ScreenFilter getFilter(){
+    	return newFilter;
+    }
     
+    public Processor getProcessor(){
+    	return proc;
+    }
     
     {
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);

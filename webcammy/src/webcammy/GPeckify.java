@@ -95,4 +95,8 @@ public class GPeckify extends Processor {
         
         return ans;  
 	}
+	
+	public CascadeClassifier getcc(){
+		return face_cascade;
+	}
 }

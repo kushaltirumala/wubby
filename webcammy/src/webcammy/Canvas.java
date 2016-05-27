@@ -28,7 +28,7 @@ import javax.swing.SwingUtilities;
  *  @author  Sources: TODO
  */
 public class Canvas extends JFrame {
-	static DrawPane canvas;
+	private DrawPane canvas;
 
 	public Canvas(){
 		super();
@@ -54,50 +54,14 @@ public class Canvas extends JFrame {
 		canvas.updateQueue(temp);
 	}
 	
+	public DrawPane getDrawPane(){
+		return canvas;
+	}
+	
 	public static void main(String[] args){
 		Canvas c = new Canvas();
-//		while(true) {
-//			c.repaint();
-//		}
 	}
+	
+	
 
 }
-
-class DrawPane extends JPanel{
-	BufferedImage image;
-	Queue<Point> pointsToAdd;
-	Graphics2D g2;
-	public void init(Set<Point> p){
-		Iterator<Point> iter = p.iterator();
-		while(iter.hasNext())
-			pointsToAdd.add(iter.next());
-	}
-	public DrawPane(){
-		super();
-		pointsToAdd = new LinkedList<Point>();
-		setVisible(true);
-	}
-	public void doDrawing(Graphics g) {
-		if(image == null ){
-			image = new BufferedImage(getSize().width, getSize().height, BufferedImage.TYPE_INT_RGB);
-			g2 = (Graphics2D)image.getGraphics();
-		}
-		g2.setColor(Color.red);
-		while(!pointsToAdd.isEmpty()) {
-    		Point temp = pointsToAdd.remove();
-    		g2.drawRect(temp.x, temp.y, 5, 5);
-    	}
-		g.drawImage(image,0, 0, null);
-		
-	}
-    public void paintComponent(Graphics g){
-    	super.paintComponent(g);
-    	doDrawing(g);
-    }
-    public void updateQueue(Point x){
-    	pointsToAdd.add(x);
-    	repaint();
-    }
-    
-
- }

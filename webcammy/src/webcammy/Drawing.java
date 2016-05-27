@@ -21,10 +21,9 @@ import java.util.TreeSet;
  */
 public class Drawing implements ScreenFilter {
 
-	Set<Point> points;
-	Canvas c;
-	double lightReference;
-	int i = 0;
+	private Set<Point> points;
+	private Canvas c;
+	private double lightReference;
 
 	public Drawing(Canvas c, double lr) {
 		points = new TreeSet<Point>();
@@ -44,7 +43,7 @@ public class Drawing implements ScreenFilter {
 			for (int i = 0; i < rows; i++) {
 				for (int j = 0; j < cols; j++) {
 					double temp = brightness(img, i, j);
-					if (temp < 0.95 + 0.05 && temp > 0.95- 0.05) {
+					if (temp < lightReference + 0.05 && temp > lightReference- 0.05) {
 						img.setRGB(i, j, Color.red.getRGB());
 						Point toAdd = new Point(i, j);
 						points.add(toAdd);
@@ -74,4 +73,13 @@ public class Drawing implements ScreenFilter {
 
 		return (red * 0.2126f + green * 0.7152f + blue * 0.0722f) / 255;
 	}
+	
+	public Canvas getCanvas(){
+		return c;
+	}
+	
+	public double getLR(){
+		return lightReference;
+	}
+	
 }

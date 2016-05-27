@@ -11,9 +11,9 @@ import org.opencv.core.Mat;
  *  @author  Ryan Tang
  *  @version May 26, 2016
  *  @author  Period: 6
- *  @author  Assignment: JMCh19_SafeTrade
+ *  @author  Assignment: wubby
  *
- *  @author  Sources: TODO
+ *  @author  Sources: Ryan Tang
  */
 public class NegativeFilter implements ScreenFilter {
 
@@ -32,7 +32,8 @@ public class NegativeFilter implements ScreenFilter {
 		int g= c.getGreen();
 		int b= c.getBlue();
 		int red = 255-r;
-		int green = 255-g; int blue = 255-b;
+		int green = 255-g; 
+		int blue = 255-b;
 		Color newc = new Color(red, green, blue);
 		return newc.getRGB();
 		
