@@ -24,23 +24,60 @@ import org.opencv.videoio.*;
  */
 public class VideoCap {
 
+	/**
+	 * mat referencing the single image from the stream
+	 */
 	private Mat mat = new Mat();
-	private byte[] data;
-	private BufferedImage img;
+
+	/**
+	 * reference to ScreenFilter to be applied (null if there is no
+	 * ScreenFilter)
+	 */
 	ScreenFilter newFilter;
+
+	/**
+	 * reference to the BufferedImage obj IF VideoCap is constructed with an
+	 * image and not a connection to the webcam
+	 */
+	BufferedImage img;
+	/**
+	 * reference to the Processor to be applied (null if there is no Processor)
+	 */
 	Processor proc;
+
+	/**
+	 * reference to a still Mat from the stream of images
+	 */
 	Mat still = new Mat();
 
+	/**
+	 * width of the camera while the video stream takes place
+	 */
 	private static final double CAMERA_WIDTH = 320;
+
+	/**
+	 * height of the camera while the video stream takes place
+	 */
 	private static final double CAMERA_HEIGHT = 240;
 
+	/**
+	 * reference to the VideoCapture object that allows connection to the webcam
+	 */
 	VideoCapture cap;
 
+	/**
+	 * Constructor in the case of loading ONLY an image—mainly for JUnit testing
+	 * 
+	 * @param img
+	 */
 	public VideoCap(BufferedImage img) {
 		this.img = img;
 		still = getMat(img);
 	}
 
+	/**
+	 * Constructor in the case of opening an actual webcam connection
+	 */
 	public VideoCap() {
 		cap = new VideoCapture(0);
 		// cap.set(Videoio.CV_CAP_PROP_FPS, 30);
@@ -50,18 +87,41 @@ public class VideoCap {
 		cap.open(0);
 	}
 
+	/**
+	 * Change the filter of the video stream
+	 * 
+	 * @param t
+	 *            the ScreenFilter to change the filter to
+	 */
 	public void changeFilter(ScreenFilter t) {
 		newFilter = t;
 	}
 
+	/**
+	 * Change the processor to process images
+	 * 
+	 * @param t
+	 *            the Processor to change the processing platform to
+	 */
 	public void changeFilter(Processor t) {
 		proc = t;
 	}
 
+	/**
+	 * changes the filter to null, meaning returning the filter back to normal
+	 */
 	public void changeFilter() {
 		newFilter = null;
+		proc = null;
 	}
 
+	/**
+	 * method for getting one frame from the webcam; applies a filter/processor
+	 * if there is one
+	 * 
+	 * @return the BufferedImage that represents the current frame the webcam
+	 *         sends
+	 */
 	public BufferedImage getOneFrame() {
 		cap.read(mat);
 		if (proc == null && newFilter == null) {
@@ -73,10 +133,22 @@ public class VideoCap {
 		}
 	}
 
+	/**
+	 * gets a still image from the webcam
+	 * 
+	 * @return the BufferedImage representing the still image
+	 */
 	public BufferedImage getStill() {
 		return getImage(mat);
 	}
 
+	/**
+	 * returns an image from a Mat
+	 * 
+	 * @param frame
+	 *            the Mat to turn into a BufferedImage
+	 * @return the BufferedImage version of that Mat
+	 */
 	public static BufferedImage getImage(Mat frame) {
 		int type = 0;
 		if (frame.channels() == 1) {
@@ -93,6 +165,13 @@ public class VideoCap {
 		return image;
 	}
 
+	/**
+	 * returns a BufferedImage from a Mat
+	 * 
+	 * @param bi
+	 *            BufferedImage to convert
+	 * @return the Mat version of that BufferedImage
+	 */
 	public static Mat getMat(BufferedImage bi) {
 		Mat mat = new Mat(bi.getHeight(), bi.getWidth(), CvType.CV_8UC3);
 		byte[] data = ((DataBufferByte) bi.getRaster().getDataBuffer()).getData();
@@ -100,14 +179,29 @@ public class VideoCap {
 		return mat;
 	}
 
+	/**
+	 * returns the current Mat
+	 * 
+	 * @return the current Mat
+	 */
 	public Mat getMat() {
 		return mat;
 	}
 
+	/**
+	 * returns the current ScreenFilter
+	 * 
+	 * @return the current ScreenFilter
+	 */
 	public ScreenFilter getFilter() {
 		return newFilter;
 	}
 
+	/**
+	 * returns the current processor
+	 * 
+	 * @return the current processor
+	 */
 	public Processor getProcessor() {
 		return proc;
 	}

@@ -53,10 +53,6 @@ public class VideoButtons extends JPanel implements ActionListener {
 		add(normalFilter, BorderLayout.SOUTH);
 		normalFilter.addActionListener(this);
 
-		JButton tracking = new JButton("change to track image");
-		add(tracking, BorderLayout.SOUTH);
-		tracking.addActionListener(this);
-
 		JButton drawing = new JButton("draw in the air");
 		add(drawing, BorderLayout.SOUTH);
 		drawing.addActionListener(this);
@@ -89,10 +85,7 @@ public class VideoButtons extends JPanel implements ActionListener {
 		} else if (source.getText().equals("change to normal")) {
 			System.out.println("normal");
 			videoCap.changeFilter();
-		} else if (source.getText().equals("change to track image")) {
-			System.out.println("image");
-			videoCap.changeFilter(new Processor());
-		} else if (source.getText().equals("draw in the air")) {
+		}  else if (source.getText().equals("draw in the air")) {
 			if (lightReference == Double.NEGATIVE_INFINITY) {
 				System.out.println("please reference the light you are using");
 			} else {
