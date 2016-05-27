@@ -24,9 +24,8 @@ import javax.swing.text.html.HTMLDocument.Iterator;
  * @author Kavi Nelakonda
  * @version May 26, 2016
  * @author Period: 6
- * @author Assignment: JMCh19_SafeTrade
+ * @author Assignment: wubby
  *
- * @author Sources: TODO
  */
 public class TopPanel extends JPanel implements ActionListener {
 

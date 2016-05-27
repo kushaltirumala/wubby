@@ -11,9 +11,8 @@ import javax.swing.*;
  *  @author  Kavi Nelakonda
  *  @version May 26, 2016
  *  @author  Period: 6
- *  @author  Assignment: JMCh19_SafeTrade
+ *  @author  Assignment: wubby
  *
- *  @author  Sources: TODO
  */
 public class VideoPanel extends JPanel  {
 

@@ -19,9 +19,8 @@ import javax.swing.JPanel;
  * @author Kavi Nelakonda
  * @version May 26, 2016
  * @author Period: 6
- * @author Assignment: JMCh19_SafeTrade
+ * @author Assignment: wubby
  *
- * @author Sources: TODO
  */
 public class VideoButtons extends JPanel implements ActionListener {
 
@@ -70,8 +69,11 @@ public class VideoButtons extends JPanel implements ActionListener {
 		setVisible(true);
 	}
 
-	/* (non-Javadoc)
-	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 	 */
 	public void actionPerformed(ActionEvent e) {
 		JButton source = (JButton) e.getSource();

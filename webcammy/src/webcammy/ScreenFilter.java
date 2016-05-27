@@ -12,7 +12,6 @@ import org.opencv.core.Mat;
  *  @author  Period: 6
  *  @author  Assignment: JMCh19_SafeTrade
  *
- *  @author  Sources: TODO
  */
 public interface ScreenFilter {
 	/**

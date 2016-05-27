@@ -15,53 +15,70 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
+
 /**
- *  TODO Write a one-sentence summary of your class here.
- *  TODO Follow it with additional details about its purpose, what abstraction
- *  it represents, and how to use it.
+ * Acts as the drawing interface for when the user selects to draw in the air
+ * with an LED Light or something else that is bright enough to detect
  *
- *  @author  Kushal Tirumala
- *  @version May 26, 2016
- *  @author  Period: 6
- *  @author  Assignment: JMCh19_SafeTrade
+ * @author Kushal Tirumala
+ * @version May 26, 2016
+ * @author Period: 6
+ * @author Assignment: wubby
  *
- *  @author  Sources: TODO
  */
 public class Canvas extends JFrame {
+	/**
+	 * The JPanel where the actual drawing happens
+	 */
 	private DrawPane canvas;
 
-	public Canvas(){
+	/**
+	 * Constructor for the JFrame. where the canvas is initializes
+	 */
+	public Canvas() {
 		super();
 		canvas = new DrawPane();
 		setContentPane(canvas);
-		
-		
 
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        setSize(2000, 2000);
+		setSize(2000, 2000);
 
-               
-        setVisible(true); 
-        		
+		setVisible(true);
+
 	}
-	
-	public void init(Set<Point> p){
+
+	/**
+	 * initializes the canvas JPanel with a set of Points to draw
+	 * 
+	 * @param p
+	 *            set of points to draw
+	 */
+	public void init(Set<Point> p) {
 		canvas.init(p);
 	}
-	
-	public void updateQueue(Point temp){
+
+	/**
+	 * updates the queue of the points the canvas needs to draw
+	 * 
+	 * @param temp
+	 *            the NEW set of points the canvas needs to draw
+	 */
+	public void updateQueue(Point temp) {
 		canvas.updateQueue(temp);
 	}
-	
-	public DrawPane getDrawPane(){
+
+	/**
+	 * returns the content pane (the canvas JPanel)
+	 * 
+	 * @return the canvas JPanel in this JFrame
+	 */
+	public DrawPane getDrawPane() {
 		return canvas;
 	}
-	
-	public static void main(String[] args){
+
+	public static void main(String[] args) {
 		Canvas c = new Canvas();
 	}
-	
-	
 
 }
